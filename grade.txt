@@ -1,0 +1,38 @@
+CMSC 421 Project 2 Grade
+Total Possible Points: 100
+
+Student: mclaren1@umbc.edu
+
+------------------------------------------------------------------
+General (30 points total)
+    - Makefiles set up properly (root and proj2) (5 points)   : 5/5
+    - Kernel cleanly compiles (5 points)                      : 5/5
+    - Directory structure as required (5 points)              : 5/5
+    - README files (5 points)                                 : 5/5
+    - Mailbox Data Structure Functionality (10 points)        : 10/10
+------------------------------------------------------------------
+Testing (20 points)                                           : 18/20
+------------------------------------------------------------------
+Mailbox Management (35 points total)
+    - Create (5 points)                                       : 5/5
+    - Remove (5 points)                                       : 5/5
+    - Reset (2 points)                                        : 2/2
+    - Count Mailboxes (1 point)                               : 1/1
+    - List Mailboxes (3 points)                               : 3/3
+    - Send (5 points)                                         : 5/5
+    - Recv (5 points)                                         : 5/5
+    - Peek (5 points)                                         : 5/5
+    - Count Messages (1 point)                                : 1/1
+    - List Messages (3 points)                                : 3/3
+------------------------------------------------------------------
+Locking (15 points total)
+    - Race conditions prevented (10 points)                   : 10/10
+    - Efficiency of locking solution (5 points)               : 5/5
+------------------------------------------------------------------
+Penalties, if applicable (see below)                          : -10 for not following incrementals dev. 
+------------------------------------------------------------------
+Final Project 2 Grade                                         : 88/100
+
+Comments from the TA: 
+------------------------------------------------------------------
+Well Done! However, count and list messages syscalls failed during testing. 

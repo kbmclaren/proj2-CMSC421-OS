@@ -1,0 +1,171 @@
+File: proj2proto/README
+Author: Caleb M. McLaren
+Date: March 8th, 2021
+Description: This document must detail the information necessary to understand
+the associated project 2 prototype.
+
+Mainbody:
+	The prototype source file : src/proto.c
+	makefile: Makefile
+	primary make command: "make all" 
+	make return/executable : make_file
+	
+	Upon execution of test_mbox, ie. "./test_mbox"
+	a user menu will appear, detailing the options available
+
+Citations:
+	Title: list.h for userspace
+		Source: Zinadore aka. Ioannis Boutsikas
+		Date Accessed: March 8th, 2021.
+		Code Version: NA, based on linux list.h v5.5.0
+		Availability: Github.com/Zinadore/userspace_list
+		Directory(this project):/usr/src/project2/proj2proto/userSpaceList
+		
+		Title: list_hacks.h
+		Source: Zinadore aka. Ioannis Boutsikas
+		Date Accessed: March 8th, 2021.
+		Code Version: NA, based on linux list.h v5.5.0
+		Availability: Github.com/Zinadore/userspace_list
+		Directory(this project):/usr/src/project2/proj2proto/userSpaceList
+
+March 29th
+    Extension was a godsend. I really don't want to retake this course over the summer.
+    Final update: added peek, count, len, print to proto to see if any flags jumped up in linter.
+    No more developement of proj2proto, just reference testing. 
+
+Ok SO March 26th
+    This whole week got eaten up by THREE midterms.
+    Mad lad developing, testing, and transferring to the kernel this weekend.
+
+Last day of Spring Break, Sun 21st:
+    TA reached out.
+    After 90 minutes, we figured out that the list head, which is a global variable, when passed into my functions
+    was not being passed by reference. Passed by reference wasn't necessary since it was global... but I was passing
+    a copy and had two heads being referenced in my functions.
+    After an hour of feeling like jumping into a whole... I started fleshing out all the features I thought would be
+    finished by mid week.
+
+Day 6 of Spring Break, Time to start phoning a friend...every day.
+    I believe I am at least 2 or 3 days behind on this mailbox implementation.
+    Yesterday's printing of mailboxes had a wrench in the gears.
+    I have to remind myself that linked lists are hard for everyone...even when they should be plug-and-play...
+    Today, I hope to print out the whole list of mailboxes, delete the whole list.
+    Then add messages to the mailboxes, and remove messages from mailboxes. Should have been implementing all this in
+    kernel by now...
+
+
+Day 5 of Spring Break, Wednesday:
+    Up and at it early. 
+     Still no print out... The only time I had success printing out was when I added the mailbox to the tail of the
+     list, and I just did a simple list_for_each with a print of pointers inside. Then that stopped working.
+     So...recreate the time we printed out with the list.h functions. Something I think is fine is not fine...
+
+    Figured out that I was doing something extra in create_mbox. No wonder I couldn't iterate across the mailboxs
+
+    On to deleting mailboxes.
+
+Day 4 of Spring Break, Tuesday:
+    Stymied trying to print out my new list of mailboxes.
+    Coincidentally successful print of pointers. Then issues with trying to print outside of memory.
+    Segfault. Now, no segfault, but also no print of list. I think the macros and debugger hate each other
+    Maybe 2 hours of work today...
+
+Day 3 of Spring Break, Monday:
+    mailbox funtions: presently unsure how to convert name given by user for mailbox to const as required by
+    LIST_HEAD...
+    Ok, so presently my mail box allows any kind of identifier. not a problem this is the prototype. But getting the
+    list started with List.h is proving...I'm need to pick between two ways of starting a list with list.h. one is
+    list_head(not_sure_of_data_type) or init_list_head(struct list_head *list). One looks direct, and fast but...
+    I'm not sure I want to solve the problem of assigning the user given mailbox id...except it look easy...
+    Create a mailbox structure. give mailbox a id paramter
+
+Day 2 of Spring Break:
+    Having spent yesterday focused on what I could do in the kernel, I will focus on the prototype today.
+    I hope to switch back and forth between kernel and prototype each day.
+    In proto: get user mailbox number
+
+    error: non newline at endof file (list_hacks, list)
+        The C language requires that every source file must end with a newline (from C99 5.1.1.2/1):
+            source file that is not empty shall end in a new-line character,
+             which shall not be immediately preceded by a backslash character before any such splicing takes place
+             (https://stackoverflow.com/questions/8172246/what-is-the-meaning-of-warning-no-new-line-at-end-of-file)
+
+    Boolean definition included in list_hacks.h Review typedef.
+        Comment out my enumerator "true".
+
+    error: arithmetic on a pointer to void is a GNU extension [-Werror,-Wpointer-arith]
+        Thought I addressed this when I changed makefile so std=c90 -> std=gnu11
+        Decided to remove the -pedantic flag.
+
+    Good compile: user input taken and printed backout
+
+
+Finally building:
+    After a 10 days neglecting this project while catching up in other classes,
+    I am setting up the prototype. First push from VM to github. Then pull from github
+    to project folder to host in order to dev prototype in Clion. First Makefile. Definitely needed.
+    Using -std=c90 for compiler standard in Cflags.
+    (https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html)
+
+    Now, do I need/want a CMakeList? Oh. CMakeList are an easy way to specify the makefile I want...
+    Ok, my makefile is probably fine. we will see
+
+    Ok, I feel lost writing code for the prototype. I feel like I actually have my bearings just developing for
+    the kernel. So 1st I am going to add to the System call declaration to /usr/src/project2/include/linux/syscall.h
+        Taking my queues from Project zero...
+            Asmlinkage (https://www.quora.com/Linux-Kernel-What-does-asmlinkage-mean-in-the-definition-of-system-calls)
+            (https://kernelnewbies.org/FAQ/asmlinkage)
+        Yes. Asmlinkage applies to the system call we are making for proj2
+
+        What about the __user macro?
+            "It allows tools like sparse to tell kernel developers that they're possibly
+            using an untrusted pointer (or a pointer that may be invalid in the current virtual address mapping)
+            improperly." (https://stackoverflow.com/questions/4521551/what-are-the-implications-of-the-linux-user-macro)
+
+        It seems the mailbox belongs to the kernel and any process may use the syscalls, creating a mailbox,
+        send or retrieve a message from an existing mailbox... pointer are used, pointer provided from user space.
+        Gonna have to check for  good pointers that don't break/panic the kernel.
+
+    Now I am going to implement the syscall declarations. Declarations will live in /usr/src/project2/proj2
+    ...
+
+
+Rough Draft One: Build prototype.
+	After studying the userspace versions list.h and list_hack.h, I was really
+	concerned that I did not understand the way the userspace prototype was
+	supposed to be coded. After speaking with the Tutor at the Computer Success
+	Center, I have decided to just implement the mail box system like normal. 
+	Forget developing the system calls for the kernel and then modifying them
+	for userspace. Just Dev in C89/90, constrain your linked list to 
+	list.h/list_hack.h, and just get the idea/algorithms right. Get some 
+	momentum going. Unable to speak with the course TA on discord. 
+	
+	Move kernel style header and c file to the proj2 folder. Start over with C. 
+	
+
+Rough Draft Zero: Build the prototype.
+	Template downloaded.
+	First build of kernel completed.
+	Proj2proto & proj2test directories set up. 
+	
+	Plan: The contents of the two directories above will work together to allow
+	for testing of the prototype. Inside Proj2proto will be the anticipated
+	pseudo system calls, written in c89 (all variables declared at the top, no 
+	"//comments"). Inside proj2test will reside the driver files that will call
+	the psuedo system call in proj2proto
+	
+	Citations:
+		Title: list.h for userspace
+		Source: Zinadore aka. Ioannis Boutsikas
+		Date Accessed: March 8th, 2021.
+		Code Version: NA, based on linux list.h v5.5.0
+		Availability: Github.com/Zinadore/userspace_list
+		Directory(this project):/usr/src/project2/proj2proto/userSpaceList
+		
+		Title: list_hacks.h
+		Source: Zinadore aka. Ioannis Boutsikas
+		Date Accessed: March 8th, 2021.
+		Code Version: NA, based on linux list.h v5.5.0
+		Availability: Github.com/Zinadore/userspace_list
+		Directory(this project):/usr/src/project2/proj2proto/userSpaceList
+	

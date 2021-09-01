@@ -1,0 +1,68 @@
+File: proj2/README
+Author: Caleb M. McLaren
+Date: March 22nd, 2021
+Description: This README must detail the information necessary to understand
+the associated project 2. 
+
+Main Body:
+	These are the associated files of proj2:
+	1 - system call headers: /usr/src/project2/include/linux/syscalls.h, bottom 
+		of the file
+	2 - system call definitions: /usr/src/project2/proj2/mssgBox.c
+	3 - system call makefile : /usr/src/project2/proj2/Makefile
+	
+	The system call makfile is linked to the kernel makefile here:
+		/usr/src/project2/Makefile
+		
+	Inside arch/x86/entry/syscalls/syscall_64.tbl, we add our project 2 system 
+	calls to the syscall table. 
+
+Citations:
+	Only sources included in the project 2 webpage were used for this portion
+	of the project.
+
+File: README
+Author: Caleb M. McLaren
+Date: March 8th, 2021
+Description: This document must detail the information necessary to understand
+the associated project 2. 
+	
+Rought Draft One: Build prototype.
+	After studying the userspace versions list.h and list_hack.h, I was really
+	concerned that I did not understand the way the userspace prototype was
+	supposed to be coded. After speaking with the Tutor at the Computer Success
+	Center, I have decided to just implement the mail box system like normal. 
+	Forget developing the system calls for the kernel and then modifying them
+	for userspace. Just Dev in C89/90, constrain your linked list to 
+	list.h/list_hack.h, and just get the idea/algorithms right. Get some 
+	momentum going. Unable to speak with the course TA on discord. 
+	
+	Move kernel style header and c file to the proj2 folder. Start over with C. 
+	
+
+Rough Draft Zero: Build the prototype.
+	Template downloaded.
+	First build of kernel completed.
+	Proj2proto & proj2test directories set up. 
+	
+	Plan: The contents of the two directories above will work together to allow
+	for testing of the prototype. Inside Proj2proto will be the anticipated
+	pseudo system calls, written in c89 (all variables declared at the top, no 
+	"//comments"). Inside proj2test will reside the driver files that will call
+	the psuedo system call in proj2proto
+	
+	Citations:
+		Title: list.h for userspace
+		Source: Zinadore aka. Ioannis Boutsikas
+		Date Accessed: March 8th, 2021.
+		Code Version: NA, based on linux list.h v5.5.0
+		Availability: Github.com/Zinadore/userspace_list
+		Directory(this project):/usr/src/project2/proj2proto/userSpaceList
+		
+		Title: list_hacks.h
+		Source: Zinadore aka. Ioannis Boutsikas
+		Date Accessed: March 8th, 2021.
+		Code Version: NA, based on linux list.h v5.5.0
+		Availability: Github.com/Zinadore/userspace_list
+		Directory(this project):/usr/src/project2/proj2proto/userSpaceList
+	

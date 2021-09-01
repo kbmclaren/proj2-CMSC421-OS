@@ -1,0 +1,43 @@
+File : proj2test/README
+Author: Caleb M. McLaren
+Email: mclaren1@umbc.edu
+Date: March 29th, 2021
+Description: this README must detail the testing and verification regimine of 
+	the system calls implemented for project 2, Section 99, CMSC 421 OS, UMBC,
+	in the Spring Semester of 2021. 
+	
+Main Body: 
+	The testing driver file : testMssgBox.c
+	makefile: Makefile
+	primary make command: "make all" 
+	make return/executable : test_mbox
+	
+	Upon execution of test_mbox, ie. "./test_mbox"
+	a user menu will appear, detailing the options available to the tester.
+	These should include the following:
+		1 - Create mailbox
+		2 - Delete mailbox
+		3 - Reset mailbox stand
+		4 - Count the mailboxes
+		5 - Return a list of mailboxes
+		6 - Send a message 
+		7 - Receive a message
+		8 - Peek at a message
+		9 - Count the messages
+		10 - Query length of message
+		11 - Print all mssgs in one mailbox
+	
+Testing Driver Implementation:
+	file: testMssgBox.c
+	
+	The driver will take many details from the testing and validation 
+	arrangment seen in proj2proto/src/proto.c
+	
+	The primary difference will be the import of system calls. Helper functions
+	to prepare user input and evaluate system call returns will be defined
+	insided the testing driver.
+	
+	 
+	
+	
+	
