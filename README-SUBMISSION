@@ -1,0 +1,54 @@
+File : /usr/src/README
+Author: Caleb M. McLaren
+Email: mclaren1@umbc.edu
+Date: March 29th, 2021
+Description: this README must detail my approach to project 2, 
+	(Section 99, CMSC 421 OS, UMBC in the Spring Semester of 2021)
+ 	cite any sources I referenced that were not included in the project 
+ 	description, and detail for the TA any additional information they may
+ 	require for the grading of this project 2.  
+	
+Main Body: 
+	Approach
+		My approach relied intensively on the detailed development of a 
+		prototype. I ended up losing the whole spring break to misunderstanding 
+		the list.h library. After a 90 min meeting with the TA on the last day 
+		of springbreak, I understood my error, and started developing like I had 
+		hoped to all Spring Break.
+		
+		But the week after spring break, I had 3 midterms, so no futher 
+		development occured until Friday the 26th.
+		
+		After figuring out and testing mostly in the protoype, I transfered
+		and translated my system calls to the kernel.
+		
+		I developed a test driver(incomplete), compiled the kernel, installed
+		the newly compiled kernel, polished up the Readme files, and removed 
+		extraneous Clion files.
+		
+		Anyways, the exhaustive testing campaign is going to have to wait. I'm
+		not spending anymore of this semester on this project. With as long as
+		I spent testing and studying the list.h library, I am very confident
+		that my syscall will do well enough for a B. But only if I turn this 
+		project in on time. 
+		
+	Sources:
+		These citation are the ones I actually remembered to bookmark.
+		---
+		books.gigatux.nl/mirror/kerneldevelopment/0672327201/toc.html
+		linuxjournal.com/article/6930
+		lwn.net/Articles/732420/
+		dri.freedesktop.org/docs/drm/core-api/kernel-api.html#list-management-
+			functions
+			
+	Additional Information:
+		To the grader (probably Mahmudal), I spent all summer break on this 
+		project. I have never worked so earnestly on a project. I thought for 
+		sure I was going to turn in the project a week ago. Then I started 
+		getting unexplained behaivor while iterating over the linked-lists.
+		Held me up fo 5 day. I tried, tested, looked up, called friends...
+		only after talking with TA Ryan (aka Nauta de Lumine) for 90 minutes
+		did we figure out that the list head was a global variable and so
+		I didn't need to pass it into my system calls. Like making a basic
+		math mistake while doint integrals or partial derivatives. 
+		Oh well, thats my sob story. Turning this in since I got no more time.  
